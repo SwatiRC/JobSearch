@@ -1,0 +1,19 @@
+<h1 class="align">Find Your Job </h1>
+<div class="tab">
+    <button class="tablinks" [class.active]="activeTab === 'jobs'" (click)="navigateToJobs('jobs')">Jobs</button>
+    <button class="tablinks" [class.active]="activeTab === 'favourite'" (click)="navigateToJobs('favourite')">Favorites</button>
+  </div>
+  <div id="Jobs" class="tabcontent" [hidden]="activeTab !== 'jobs'">
+    <div (click)="handleIconStarClick($event);">
+        <div [innerHTML]="generateJobCards()"></div>
+      </div>
+      
+      
+  </div>
+  
+  <div id="Favorites" class="tabcontent" [hidden]="activeTab !== 'favourite'">
+    <div [innerHTML]="jobCardsHTML"></div>
+    
+  </div>
+
+  

@@ -1,0 +1,41 @@
+.job-card {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    color: black;
+    border-radius: 5px;
+    margin: auto;
+    width: 74%;
+
+  }
+  
+  .company-logo {
+    width: 100px; /* Adjust size as needed */
+    height: auto;
+    margin-right: 20px;
+  }
+  
+  .job-details {
+    flex-grow: 1;
+  }
+
+  .title{
+    font-weight: bolder;
+  }
+  
+  .reference, .location {
+    margin: 0;
+  }
+  .job-details {
+    display: inline-block;
+    align-items: center;
+  }
+  
+  .info {
+    margin: 0;
+  }
+  
+  .reference, .location {
+    margin-right: 10px; /* Add some spacing between the reference and location */
+  }
+  

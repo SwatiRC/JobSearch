@@ -1,0 +1,94 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/mini.css/dist/mini-dark.min.css";
+
+/**
+ * <span class="icon-star"></span>
+ * <span class="icon-star" style="color: red"></span>
+ */
+span.icon-star {
+    background-image: unset;
+    background-color: currentColor;
+    mask-size: cover;
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'  stroke='%23fdfdfd' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'%3E%3C/polygon%3E%3C/svg%3E");
+}
+body{
+    background-color: #ebeff5;
+}
+.align{
+    text-align: center;
+    color: black;
+}
+
+span.star {
+    color: gold;
+    background-color: gold !important;
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'  stroke='%23fdfdfd' stroke-width='2' fill='gold' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'%3E%3C/polygon%3E%3C/svg%3E")!important;
+
+}
+ .title2{
+    font-size: 33px;
+    font-weight: 300;
+ }
+
+ .chip-container {
+    display: inline-flex;
+    flex-wrap: wrap;
+  }
+  
+  .chip {
+    background-color:#5e81ac;
+    color: white;
+    border-radius: 16px;
+    padding: 0px 11px;
+    margin: 4px;
+    display: flex;
+    align-items: center;
+  }
+  
+ 
+  
+
+
+
+/* Style the tab buttons */
+.tab {
+    overflow: hidden;
+    /* margin: auto; */
+    margin: auto auto;
+    text-align: center;
+    width: 73%;
+    display: flex
+  }
+  
+  .tab button {
+    background-color: #e7ebf1 ;
+    border: 1px solid #e7ebf1;
+    float: left;
+    cursor: pointer;
+    color: black;
+    padding: 10px 20px;
+    width: 47%;
+    background: #e7ebf1;
+    
+  }
+  
+  .active{
+    background-color: #3b4252  !important;
+    border: 1px solid #3b4252 !important;
+    color: white !important;
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    padding: 20px;
+    border: 1px solid #ccc;
+  }
+  
+  .tabcontent h3 {
+    margin-top: 0;
+  }
+  
+  .active {
+    display: block;
+  }
+  
