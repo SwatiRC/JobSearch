@@ -97,7 +97,7 @@ if(jobWithMatchingId){
 
 } return jobCardsHTML;}
 
-addToFavorites(jobId:Number) {
+addToFavorites(jobId:number) {
   let favJob: Job | undefined;
 // Find the job with the given jobId
 const favJobIndex = this.jobs.findIndex(job => job.id === jobId);
