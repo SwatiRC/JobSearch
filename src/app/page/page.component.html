@@ -7,9 +7,9 @@
     <div class="job-card" style="display: flow;">
         
         <div class="job-details" style="display: flex;">
-            <img class="company-logo" [src]="jobdata.companyLogo" alt="Company Logo">
+            <img class="company-logo" [src]="data?.companyLogo" alt="Company Logo">
             <div>
-                <p class="title2">{{ jobdata.title }}</p>
+                <p class="title2">{{ data?.title }}</p>
                 <div class="chip-container" [innerHTML]="generateChips()">
                    
                   </div>
@@ -22,13 +22,13 @@
         <p class="info" style="
         display: inline-grid;
     ">
-            <span><span style="font-weight: bold;">Published Date:</span> {{ jobdata.publishDate }}</span>
-            <span class="location"><span style="font-weight: bold;">Location:</span> {{ jobdata.location }}</span>
-            <span class="reference"><span style="font-weight: bold;">Reference:</span> {{ jobdata.reference }}</span>
+            <span><span style="font-weight: bold;">Published Date:</span> {{ data?.publishDate }}</span>
+            <span class="location"><span style="font-weight: bold;">Location:</span> {{ data?.location }}</span>
+            <span class="reference"><span style="font-weight: bold;">Reference:</span> {{ data?.reference }}</span>
         </p>
     <br>
     <span style="font-weight: bold;">Description:</span>
-    <div [innerHTML]="jobdata.description"></div>
+    <div [innerHTML]="data?.description"></div>
     
 </div>
 </div>

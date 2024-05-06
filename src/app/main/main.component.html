@@ -7,13 +7,12 @@
     <div (click)="handleIconStarClick($event);">
         <div [innerHTML]="generateJobCards()"></div>
       </div>
-      
-      
-  </div>
-  
-  <div id="Favorites" class="tabcontent" [hidden]="activeTab !== 'favourite'">
-    <div [innerHTML]="jobCardsHTML"></div>
-    
+
+
   </div>
 
-  
+  <div id="Favorites" class="tabcontent" [hidden]="activeTab !== 'favourite'">
+    <div [innerHTML]="jobCardsHTML"></div>
+    <p id="no-favorites-message" [hidden]="jobCardsHTML">No favorites selected</p>
+  </div>
+

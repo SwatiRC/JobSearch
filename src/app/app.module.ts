@@ -6,7 +6,8 @@ import { routes } from './app.routes';
 
 @NgModule({
   declarations: [
-    
+    MainComponent,
+    PageComponent
   ],
   imports: [
     RouterModule.forRoot(routes) // Configure routing here

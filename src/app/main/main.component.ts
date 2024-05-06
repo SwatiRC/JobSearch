@@ -2,6 +2,16 @@ import { Component } from '@angular/core';
 import {  DETAILED,ALL_JOBS} from '../../mocks';
 import { Router } from '@angular/router';
 
+// Define interfaces for job data
+interface Job {
+  id: number;
+  companyName: string;
+  title: string;
+  companyLogo: string;
+  reference: string;
+
+}
+
 @Component({
   selector: 'app-main',
   standalone: true,
@@ -11,19 +21,18 @@ import { Router } from '@angular/router';
 })
 export class MainComponent {
 
- jobs= ALL_JOBS;
+ jobs : Job[]= ALL_JOBS;
 activeTab: string = 'Jobs'; // Initialize active tab
-favoriteJobs: any[] = [];
+favoriteJobs: Job[] = [];
 jobCardsHTML!: string;
-favid: any;
 Alljobsdata =[DETAILED]
-jobdata: any= []
+
 
 
 
 constructor(private router: Router) {}
 ngOnInit(): void {
-  
+
   if (location.href.includes('/favourite')) {
     this.activeTab = 'favourite';
     const storedFavoriteJobs = localStorage.getItem('favoriteJobs');
@@ -49,35 +58,35 @@ if (storedFavoriteJobs) {
 navigateToJobs(type: string) {
   this.router.navigate(['/'+type]);
 }
-generateJobCards(): any {
+generateJobCards(){
   let jobCardsHTML = '';
   for (const job of this.jobs) {
     const jobId = job.id;
-    const jobWithMatchingId = this.favoriteJobs.find(job => job.id === jobId);
+    const jobWithMatchingId = this.favoriteJobs.find(job => job['id'] === jobId);
 if(jobWithMatchingId){
     jobCardsHTML += `
       <div class="job-card">
-        <img class="company-logo" src="${job.companyLogo}" alt="Company Logo">
+        <img class="company-logo" src="${job?.companyLogo}" alt="Company Logo">
         <div class="job-details">
-          <p class="title ${jobId}">${job.title}</p>
+          <p class="title ${jobId}">${job?.title}</p>
           <p class="info">
-            <span class="reference">Company: ${job.companyName}</span>
-            <span class="location">Reference: ${job.reference}</span>
+            <span class="reference">Company: ${job?.companyName}</span>
+            <span class="location">Reference: ${job?.reference}</span>
           </p>
         </div>
         <span class="icon-star star"  style="color: yellow; cursor: pointer;">${jobId}</span>
       </div>
     `;
-  
+
   }else{
     jobCardsHTML += `
     <div class="job-card">
-      <img class="company-logo" src="${job.companyLogo}" alt="Company Logo">
+      <img class="company-logo" src="${job?.companyLogo}" alt="Company Logo">
       <div class="job-details">
-        <p class="title ${jobId}">${job.title}</p>
+        <p class="title ${jobId}">${job?.title}</p>
         <p class="info">
-          <span class="reference">Company: ${job.companyName}</span>
-          <span class="location">Reference: ${job.reference}</span>
+          <span class="reference">Company: ${job?.companyName}</span>
+          <span class="location">Reference: ${job?.reference}</span>
         </p>
       </div>
       <span class="icon-star"  style="color: yellow; cursor: pointer;">${jobId}</span>
@@ -85,19 +94,19 @@ if(jobWithMatchingId){
   `;
 
   }
- 
+
 } return jobCardsHTML;}
 
-addToFavorites(jobId: any) {
-  let favJob: any;
+addToFavorites(jobId:Number) {
+  let favJob: Job | undefined;
 // Find the job with the given jobId
 const favJobIndex = this.jobs.findIndex(job => job.id === jobId);
 if (favJobIndex !== -1) {
   favJob = this.jobs[favJobIndex];
   if (favJob) {
-    if (this.favoriteJobs.some(job => job.id === jobId)) {
+    if (this.favoriteJobs.some(job => job['id']=== jobId)) {
       // If the job is already in favoriteJobs, remove it
-      this.favoriteJobs = this.favoriteJobs.filter(job => job.id !== jobId);
+      this.favoriteJobs = this.favoriteJobs.filter(job => job['id'] !== jobId);
       localStorage.setItem('favoriteJobs', JSON.stringify(this.favoriteJobs));
     } else {
       // If the job is not in favoriteJobs, add it
@@ -116,20 +125,21 @@ updateJobCardsHTML() {
   this.jobCardsHTML = '';
   // Loop through the favoriteJobs and generate HTML for each job
   for (const job of this.favoriteJobs) {
-    const jobId = job.id;
+    const jobId = job['id'];
     this.jobCardsHTML += `
       <div class="job-card">
-        <img class="company-logo" src="${job.companyLogo}" alt="Company Logo">
+        <img class="company-logo" src="${job['companyLogo']}" alt="Company Logo">
         <div class="job-details">
-          <p class="title">${job.title}</p>
+          <p class="title">${job['title']}</p>
           <p class="info">
-            <span class="reference">Company: ${job.companyName}</span>
-            <span class="location">Reference: ${job.reference}</span>
+            <span class="reference">Company: ${job['companyName']}</span>
+            <span class="location">Reference: ${job['reference']}</span>
           </p>
         </div>
       </div>
     `;
-  }
+      }
+
 }
 
 
@@ -140,17 +150,17 @@ if (target.classList.contains('title')) {
   const otherClasses = Array.from(target.classList).filter(className => className !== 'title');
 
   this.router.navigate(['/job/'+otherClasses[0]]);
- 
+
 }
 
 if (target.classList.contains('icon-star') && !target.classList.contains('star')) {
   // Icon-star element clicked, perform your actions here
-  this.addToFavorites(Number(target.textContent)); 
+  this.addToFavorites(Number(target.textContent));
   target.classList.add("star")
 
 }else if(target.classList.contains('star')){
-  this.addToFavorites(Number(target.textContent)); 
- 
+  this.addToFavorites(Number(target.textContent));
+
   target.classList.remove('star')
 }
 }
